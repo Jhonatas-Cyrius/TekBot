@@ -1,0 +1,14 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "TekBot_DB",
+            "group": "TekBot",
+            "database": "TekBot_DB",
+            "username": "postgres"
+        }
+    ]
+}

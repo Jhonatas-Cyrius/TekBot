@@ -785,3 +785,43 @@
 2025/06/05-23:02:15.018 8abc compacted to: files[ 0 0 21 0 0 0 0 ]
 2025/06/05-23:02:15.019 8abc Delete type=2 #551
 2025/06/05-23:02:15.019 8abc Delete type=2 #561
+2025/06/05-23:02:59.949 8abc Level-0 table #568: started
+2025/06/05-23:02:59.981 8abc Level-0 table #568: 1049678 bytes OK
+2025/06/05-23:02:59.984 8abc Delete type=0 #559
+2025/06/05-23:03:00.990 8abd Compacting 1@0 + 0@1 files
+2025/06/05-23:03:01.030 8abd Generated table #569@0: 20605 keys, 175396 bytes
+2025/06/05-23:03:01.055 8abd Generated table #570@0: 17614 keys, 434047 bytes
+2025/06/05-23:03:01.056 8abd Compacted 1@0 + 0@1 files => 609443 bytes
+2025/06/05-23:03:01.056 8abd compacted to: files[ 0 2 21 0 0 0 0 ]
+2025/06/05-23:03:02.053 8abd Compacting 1@1 + 3@2 files
+2025/06/05-23:03:02.154 8abd Generated table #571@1: 56971 keys, 2232516 bytes
+2025/06/05-23:03:02.230 8abd Generated table #572@1: 83052 keys, 2228161 bytes
+2025/06/05-23:03:02.344 8abd Generated table #573@1: 93944 keys, 2041900 bytes
+2025/06/05-23:03:02.344 8abd Compacted 1@1 + 3@2 files => 6502577 bytes
+2025/06/05-23:03:02.345 8abd compacted to: files[ 0 1 21 0 0 0 0 ]
+2025/06/05-23:03:02.345 8abd Delete type=2 #568
+2025/06/05-23:03:02.345 8abd Delete type=2 #565
+2025/06/05-23:03:02.345 8abd Delete type=2 #564
+2025/06/05-23:03:02.346 8abd Delete type=2 #563
+2025/06/05-23:03:02.346 8abd Delete type=2 #570
+2025/06/05-23:03:35.116 8abc Level-0 table #575: started
+2025/06/05-23:03:35.154 8abc Level-0 table #575: 1029546 bytes OK
+2025/06/05-23:03:35.155 8abc Delete type=0 #567
+2025/06/05-23:03:35.168 8abc Compacting 1@0 + 1@1 files
+2025/06/05-23:03:35.235 8abc Generated table #576@0: 41274 keys, 346523 bytes
+2025/06/05-23:03:35.255 8abc Generated table #577@0: 18871 keys, 453307 bytes
+2025/06/05-23:03:35.255 8abc Compacted 1@0 + 1@1 files => 799830 bytes
+2025/06/05-23:03:35.255 8abc compacted to: files[ 0 2 21 0 0 0 0 ]
+2025/06/05-23:03:35.256 8abc Delete type=2 #569
+2025/06/05-23:03:35.256 8abc Delete type=2 #575
+2025/06/05-23:03:36.196 8abd Compacting 1@1 + 3@2 files
+2025/06/05-23:03:36.291 8abd Generated table #578@1: 55317 keys, 2230776 bytes
+2025/06/05-23:03:36.364 8abd Generated table #579@1: 79027 keys, 2222104 bytes
+2025/06/05-23:03:36.460 8abd Generated table #580@1: 104149 keys, 2255596 bytes
+2025/06/05-23:03:36.477 8abd Generated table #581@1: 10727 keys, 234641 bytes
+2025/06/05-23:03:36.477 8abd Compacted 1@1 + 3@2 files => 6943117 bytes
+2025/06/05-23:03:36.477 8abd compacted to: files[ 0 1 22 0 0 0 0 ]
+2025/06/05-23:03:36.478 8abd Delete type=2 #573
+2025/06/05-23:03:36.478 8abd Delete type=2 #572
+2025/06/05-23:03:36.478 8abd Delete type=2 #571
+2025/06/05-23:03:36.478 8abd Delete type=2 #577
