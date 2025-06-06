@@ -1,0 +1,42 @@
+2025/06/05-22:55:17.705 8a17 Reusing MANIFEST /home/jhonatas/Projetos/TekBot_linux/backend/whatsapp-service/tokens/tekbot-session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2025/06/05-22:55:17.705 8a17 Recovering log #226
+2025/06/05-22:55:17.713 8a17 Reusing old log /home/jhonatas/Projetos/TekBot_linux/backend/whatsapp-service/tokens/tekbot-session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/000226.log 
+2025/06/05-22:55:20.200 8a1a Level-0 table #240: started
+2025/06/05-22:55:20.203 8a1a Level-0 table #240: 46498 bytes OK
+2025/06/05-22:55:20.204 8a1a Delete type=0 #226
+2025/06/05-22:55:20.204 8a17 Manual compaction at level-0 from '\x00\x18\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x19\x00\x00\x00' @ 0 : 0; will stop at (end)
+2025/06/05-22:55:20.205 8a17 Level-0 table #242: started
+2025/06/05-22:55:20.206 8a17 Level-0 table #242: 438 bytes OK
+2025/06/05-22:55:20.207 8a17 Delete type=0 #239
+2025/06/05-22:55:20.207 8a17 Manual compaction at level-0 from '\x00\x19\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x1a\x00\x00\x00' @ 0 : 0; will stop at '\x00\x19\x00\x00\x05' @ 926543 : 0
+2025/06/05-22:55:20.208 8a17 Compacting 1@0 + 1@1 files
+2025/06/05-22:55:20.212 8a17 Generated table #243@0: 1609 keys, 28252 bytes
+2025/06/05-22:55:20.212 8a17 Compacted 1@0 + 1@1 files => 28252 bytes
+2025/06/05-22:55:20.214 8a17 compacted to: files[ 0 1 10 0 0 0 0 ]
+2025/06/05-22:55:20.215 8a17 Delete type=2 #242
+2025/06/05-22:55:20.215 8a17 Manual compaction at level-0 from '\x00\x19\x00\x00\x05' @ 926543 : 0 .. '\x00\x1a\x00\x00\x00' @ 0 : 0; will stop at (end)
+2025/06/05-22:55:23.735 8a19 Compacting 1@1 + 10@2 files
+2025/06/05-22:55:23.880 8a19 Generated table #244@1: 45853 keys, 2216191 bytes
+2025/06/05-22:55:23.997 8a19 Generated table #245@1: 2687 keys, 2153548 bytes
+2025/06/05-22:55:24.096 8a19 Generated table #246@1: 3207 keys, 2164702 bytes
+2025/06/05-22:55:24.197 8a19 Generated table #247@1: 3398 keys, 2171407 bytes
+2025/06/05-22:55:24.301 8a19 Generated table #248@1: 3050 keys, 2163230 bytes
+2025/06/05-22:55:24.367 8a19 Generated table #249@1: 10814 keys, 2168537 bytes
+2025/06/05-22:55:24.528 8a19 Generated table #250@1: 28224 keys, 2256481 bytes
+2025/06/05-22:55:24.632 8a19 Generated table #251@1: 25242 keys, 2264418 bytes
+2025/06/05-22:55:24.763 8a19 Generated table #252@1: 75032 keys, 2247170 bytes
+2025/06/05-22:55:24.770 8a19 Generated table #253@1: 2030 keys, 46110 bytes
+2025/06/05-22:55:24.770 8a19 Compacted 1@1 + 10@2 files => 19851794 bytes
+2025/06/05-22:55:24.772 8a19 compacted to: files[ 0 0 10 0 0 0 0 ]
+2025/06/05-22:55:24.773 8a19 Delete type=2 #231
+2025/06/05-22:55:24.773 8a19 Delete type=2 #235
+2025/06/05-22:55:24.773 8a19 Delete type=2 #232
+2025/06/05-22:55:24.773 8a19 Delete type=2 #240
+2025/06/05-22:55:24.773 8a19 Delete type=2 #236
+2025/06/05-22:55:24.773 8a19 Delete type=2 #234
+2025/06/05-22:55:24.773 8a19 Delete type=2 #228
+2025/06/05-22:55:24.774 8a19 Delete type=2 #230
+2025/06/05-22:55:24.774 8a19 Delete type=2 #233
+2025/06/05-22:55:24.774 8a19 Delete type=2 #237
+2025/06/05-22:55:24.774 8a19 Delete type=2 #243
+2025/06/05-22:55:24.774 8a19 Delete type=2 #229
