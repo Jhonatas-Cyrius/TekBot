@@ -9,6 +9,11 @@ base_dir = os.path.dirname(os.path.dirname(__file__))  # aponta para backend/
 dotenv_path = os.path.join(base_dir, ".env")
 load_dotenv(dotenv_path)
 
+# backend/app/database.py
+load_dotenv()  
+DATABASE_URL = os.getenv("DATABASE_URL")
+print("▶️ DATABASE_URL carregada:", DATABASE_URL)    # <-- adicione esta linha
+
 DATABASE_URL = os.getenv("DATABASE_URL")
 if not DATABASE_URL:
     raise RuntimeError("DATABASE_URL não encontrada em .env")
