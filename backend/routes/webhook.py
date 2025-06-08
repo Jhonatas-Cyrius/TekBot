@@ -1,13 +1,14 @@
-# 1) Arquivo: backend/routes/webhook.py
+# backend/routes/webhook.py
+
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from app.database import SessionLocal
 from app.models import Mensagem, Chamado, Empresa
+from app.ai_utils import classify_issue
 from datetime import datetime
 
 router = APIRouter()
 
-# Dependência para obter sessão do banco
 def get_db():
     db = SessionLocal()
     try:
@@ -17,37 +18,64 @@ def get_db():
 
 @router.post("/webhook", status_code=200)
 async def receive_message(payload: dict, db: Session = Depends(get_db)):
-    """
-    Recebe JSON com {'from': '<jid>@c.us', 'body': '<texto>'}
-    Cria um Chamado (se necessário) e armazena a Mensagem no banco.
-    """
+    # 1) log para confirmar que o POST chegou
+    print("➡️ [Webhook] payload recebido:", payload)
+
     origem = payload.get("from")
-    texto = payload.get("body")
+    texto  = payload.get("body")
     if not origem or not texto:
         raise HTTPException(400, "Payload inválido")
 
-    # Exemplo: sempre criamos um chamado novo (você pode aprimorar)
-    empresa = db.query(Empresa).filter_by(id=1).first()
+    telefone = origem.split("@")[0]
+
+    # 2) get or create Empresa
+    empresa = db.query(Empresa).filter_by(contato=telefone).first()
     if not empresa:
-        raise HTTPException(404, "Empresa padrão não encontrada")
+        empresa = Empresa(nome_fantasia=telefone, contato=telefone)
+        db.add(empresa)
+        db.commit()
+        db.refresh(empresa)
 
-    chamado = Chamado(
-        empresa_id=empresa.id,
-        tipo_problema="Desconhecido",
-        prioridade="Média",
-        status="Aberto",
-        data_criacao=datetime.utcnow()
+    # 3) agrupar em Chamado aberto
+    chamado = (
+        db.query(Chamado)
+          .filter_by(empresa_id=empresa.id, status="Aberto")
+          .order_by(Chamado.data_criacao.desc())
+          .first()
     )
-    db.add(chamado)
-    db.commit()
-    db.refresh(chamado)
+    if not chamado:
+        chamado = Chamado(
+            empresa_id=empresa.id,
+            tipo_problema="Desconhecido",
+            prioridade="Média",
+            status="Aberto",
+            data_criacao=datetime.utcnow()
+        )
+        db.add(chamado)
+        db.commit()
+        db.refresh(chamado)
 
+    # 4) log antes de chamar a IA
+    print(f"🔍 [IA] classificando texto: {texto}")
+
+    # 5) chamada à IA
+    try:
+        tipo, prioridade = await classify_issue(texto)
+        print(f"🔍 [IA] retornou: tipo={tipo}, prioridade={prioridade}")
+        chamado.tipo_problema = tipo
+        chamado.prioridade    = prioridade
+        db.commit()
+        db.refresh(chamado)
+    except Exception as e:
+        print("❌ [IA] falha ao classificar:", e)
+
+    # 6) persiste a mensagem
     msg = Mensagem(
-        chamado_id=chamado.id,
-        remetente="Cliente",
-        conteudo=texto,
-        origem="WhatsApp",
-        data_hora=datetime.utcnow()
+        chamado_id = chamado.id,
+        remetente   = "Cliente",
+        conteudo    = texto,
+        origem      = "WhatsApp",
+        data_hora   = datetime.utcnow()
     )
     db.add(msg)
     db.commit()
