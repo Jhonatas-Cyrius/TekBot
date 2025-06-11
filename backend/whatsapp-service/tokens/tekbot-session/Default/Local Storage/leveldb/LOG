@@ -1,3 +1,6 @@
-2025/06/07-23:04:04.814 dd4 Reusing MANIFEST /home/jhonatas/Projetos/TekBot_linux/backend/whatsapp-service/tokens/tekbot-session/Default/Local Storage/leveldb/MANIFEST-000001
-2025/06/07-23:04:04.836 dd4 Recovering log #4
-2025/06/07-23:04:04.854 dd4 Reusing old log /home/jhonatas/Projetos/TekBot_linux/backend/whatsapp-service/tokens/tekbot-session/Default/Local Storage/leveldb/000004.log 
+2025/06/10-20:09:43.480 cfb Reusing MANIFEST /home/jhonatas/Projetos/TekBot_linux/backend/whatsapp-service/tokens/tekbot-session/Default/Local Storage/leveldb/MANIFEST-000001
+2025/06/10-20:09:43.481 cfb Recovering log #4
+2025/06/10-20:09:43.484 cfb Reusing old log /home/jhonatas/Projetos/TekBot_linux/backend/whatsapp-service/tokens/tekbot-session/Default/Local Storage/leveldb/000004.log 
+2025/06/10-21:09:54.853 cfd Level-0 table #8: started
+2025/06/10-21:09:54.903 cfd Level-0 table #8: 15763 bytes OK
+2025/06/10-21:09:54.912 cfd Delete type=0 #4

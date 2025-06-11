@@ -1,5 +1,4 @@
 # backend/routes/webhook.py
-
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from app.database import SessionLocal
@@ -18,25 +17,17 @@ def get_db():
 
 @router.post("/webhook", status_code=200)
 async def receive_message(payload: dict, db: Session = Depends(get_db)):
-    # 1) log para confirmar que o POST chegou
     print("➡️ [Webhook] payload recebido:", payload)
-
-    origem = payload.get("from")
-    texto  = payload.get("body")
+    origem = payload.get("from"); texto = payload.get("body")
     if not origem or not texto:
         raise HTTPException(400, "Payload inválido")
 
     telefone = origem.split("@")[0]
-
-    # 2) get or create Empresa
     empresa = db.query(Empresa).filter_by(contato=telefone).first()
     if not empresa:
         empresa = Empresa(nome_fantasia=telefone, contato=telefone)
-        db.add(empresa)
-        db.commit()
-        db.refresh(empresa)
+        db.add(empresa); db.commit(); db.refresh(empresa)
 
-    # 3) agrupar em Chamado aberto
     chamado = (
         db.query(Chamado)
           .filter_by(empresa_id=empresa.id, status="Aberto")
@@ -51,33 +42,23 @@ async def receive_message(payload: dict, db: Session = Depends(get_db)):
             status="Aberto",
             data_criacao=datetime.utcnow()
         )
-        db.add(chamado)
-        db.commit()
-        db.refresh(chamado)
+        db.add(chamado); db.commit(); db.refresh(chamado)
 
-    # 4) log antes de chamar a IA
+    # INVOCAR A NOVA IA VIA HTTP
     print(f"🔍 [IA] classificando texto: {texto}")
+    tipo, prioridade = await classify_issue(texto)
+    chamado.tipo_problema = tipo
+    chamado.prioridade    = prioridade
+    db.commit(); db.refresh(chamado)
+    print(f"✅ Chamado atualizado: tipo={tipo}, prioridade={prioridade}")
 
-    # 5) chamada à IA
-    try:
-        tipo, prioridade = await classify_issue(texto)
-        print(f"🔍 [IA] retornou: tipo={tipo}, prioridade={prioridade}")
-        chamado.tipo_problema = tipo
-        chamado.prioridade    = prioridade
-        db.commit()
-        db.refresh(chamado)
-    except Exception as e:
-        print("❌ [IA] falha ao classificar:", e)
-
-    # 6) persiste a mensagem
     msg = Mensagem(
-        chamado_id = chamado.id,
-        remetente   = "Cliente",
-        conteudo    = texto,
-        origem      = "WhatsApp",
-        data_hora   = datetime.utcnow()
+        chamado_id=chamado.id,
+        remetente="Cliente",
+        conteudo=texto,
+        origem="WhatsApp",
+        data_hora=datetime.utcnow()
     )
-    db.add(msg)
-    db.commit()
+    db.add(msg); db.commit()
 
     return {"status": "ok", "chamado_id": chamado.id}
