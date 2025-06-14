@@ -5,4 +5,6 @@ psycopg2-binary
 python-dotenv
 g4f[async]
 httpx
+pytest
+pytest-json-report
 

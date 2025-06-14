@@ -33,3 +33,11 @@ SessionLocal = sessionmaker(
 )
 
 Base = declarative_base()
+
+def get_db():
+    """Dependency do FastAPI para fornecer a sessão do SQLAlchemy."""
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
